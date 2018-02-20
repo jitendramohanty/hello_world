@@ -2,9 +2,9 @@ pipeline {
   agent any
   stages {
     stage('Build and test') {
+      agent any
       steps {
-        fileExists 'p2.py'
-        echo 'completing'
+        echo 'starting process'
       }
     }
     stage('deploy') {
