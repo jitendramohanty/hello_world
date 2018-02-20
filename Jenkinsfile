@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build and test') {
       steps {
-        fileExists 'p1.py'
+        fileExists 'p2.py'
         echo 'completing'
       }
     }
