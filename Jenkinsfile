@@ -5,6 +5,7 @@ pipeline {
       agent any
       steps {
         echo 'starting process'
+        input "Enter the branch id"
       }
     }
     stage('deploy') {
