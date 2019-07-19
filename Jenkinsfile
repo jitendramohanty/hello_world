@@ -2,10 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Build and test') {
-      agent any
-      steps {
-        echo 'starting process'
-        input "Enter the branch id"
+      parallel {
+        stage('Build and test') {
+          agent any
+          steps {
+            echo 'starting process'
+            input 'Enter the branch id'
+          }
+        }
+        stage('Stage1') {
+          steps {
+            sh 'echo "hello world"'
+          }
+        }
       }
     }
     stage('deploy') {
@@ -16,5 +25,8 @@ pipeline {
         echo 'Deployment completed'
       }
     }
+  }
+  environment {
+    label = 'host'
   }
 }
